@@ -4,8 +4,16 @@
 
 <h2>Getting Started</h2>
 <ol>
-  <li>Git clone the repo: </li>
+  <li>Git clone the repo: <code>git clone https://github.com/HaughtCodeworks/front-end-technical-challenge.git grabhub</code></li>
+  <li>cd into the project: <code>cd grabhub</code></li>
+  <li>install dependencies: <code>npm install</code></li>
+  <li>start the server: <code>npm start</code></li>
+  <li>navigate to: <code>http://localhost:3000/instructions</code> to read the instructions for completing the challenge.</li>
+  <li>run tests: <code>npm test</code></li>
+  <li>when you've completed the challenge, push the code to your own repo and let us know!</li>
 </ol>
+
+<h3>The React Boilerplate Readme follows...</h3>
 
 
 ## Features
