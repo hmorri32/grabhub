@@ -36,7 +36,10 @@ const Instructions = () => (
     <p>
       The client would like a reskinning of the app to match thier branding. A
       designer has added a style guide to the app{' '}
-      <a target="_blank" href="https://brandbuilder.ai/5c66efe610653d0057de1e48/brand">
+      <a
+        target="_blank"
+        href="https://brandbuilder.ai/5c66efe610653d0057de1e48/brand"
+      >
         available here.
       </a>{' '}
       Apply the new styles using your best judgment.
@@ -48,7 +51,7 @@ const Instructions = () => (
         your terminal to get details about a github user.
       </li>
       <li>
-        The boilerplate's{' '}
+        The boilerplate&#39;s{' '}
         <a target="_blank" href="/README.md">
           readme
         </a>{' '}
