@@ -40,11 +40,11 @@ const Instructions = () => (
       designer has added a style guide to the app{' '}
       <a
         target="_blank"
-        href="https://brandbuilder.ai/5c66efe610653d0057de1e48/brand"
+        href="https://github.com/HaughtCodeworks/front-end-technical-challenge/blob/master/grabhub_brand_identity.pdf"
       >
-        available here.
+        available here
       </a>{' '}
-      Apply the new styles using your best judgment.
+      for download. Apply the new styles using your best judgment.
     </p>
     <h2>Resources</h2>
     <ul>
