@@ -6,8 +6,10 @@ const Instructions = () => (
     <h2>About HCW Grabhub</h2>
     <p>
       Grabhub was generated using{' '}
-      <a href="https://www.reactboilerplate.com/">React Boilerplate</a>, a
-      boilerplate application developed by Max Stoiber for building scalable
+      <a href="https://www.reactboilerplate.com/" target="_blank">
+        React Boilerplate
+      </a>
+      , a boilerplate application developed by Max Stoiber for building scalable
       React Web applications. Please get started by familiarizing yourself with
       the project if you are not already. The boilerplate ships with an example
       app, an interface for fetching links to a Github user&#39;s repos.
@@ -22,10 +24,10 @@ const Instructions = () => (
       <em>
         As a user, when I visit the home page, I see a field to enter a Github
         username. When I enter a username, above the user&#39;s repos, I see a
-        link to page with details about the user. On navigating to that page, I
-        see the user&#39;s avatar, a link to their profile, a list of thier
+        link to a page with details about the user. On navigating to that page,
+        I see the user&#39;s avatar, a link to their profile, a list of thier
         followers, thier organizations and some basic details, such as when they
-        joined the system, where they are located and ect.
+        joined the system, where they are located, etc.
       </em>
     </blockquote>
     <p>
@@ -47,12 +49,15 @@ const Instructions = () => (
     <h2>Resources</h2>
     <ul>
       <li>
-        try <code>curl https://api.github.com/users/__username__</code> from
+        Try <code>curl https://api.github.com/users/__username__</code> from
         your terminal to get details about a github user.
       </li>
       <li>
         The boilerplate&#39;s{' '}
-        <a target="_blank" href="/README.md">
+        <a
+          target="_blank"
+          href="https://github.com/HaughtCodeworks/front-end-technical-challenge#the-react-boilerplate-readme-follows"
+        >
           readme
         </a>{' '}
         has been left largely intact and is packed with info about using the
