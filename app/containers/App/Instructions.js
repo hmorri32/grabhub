@@ -22,30 +22,20 @@ const Instructions = () => (
     <h3>The client has requested a new feature...</h3>
     <blockquote>
       <em>
-        As a user, when I visit the home page, I see a field to enter a Github
-        username. When I enter a username, above the user&#39;s repos, I see a
-        link to a page with details about the user. On navigating to that page,
-        I see the user&#39;s avatar, a link to their profile, a list of thier
-        followers, thier organizations and some basic details, such as when they
-        joined the system, where they are located, etc.
+        As a person, when I visit the home page, I see a field to enter a Github
+        username. When I enter a username and hit enter, add a link to a user
+        detail page above the list of repos that returns as a search result.
+        This link would take the person to a new page that provides the
+        following information: the user's name, avatar image, a link to their
+        github profile, when they joined the system, and a list of their
+        followers.
       </em>
     </blockquote>
     <p>
       Follow the established pattern to add the new feature. Maintain the 100%
       test coverage established in the repo.
     </p>
-    <h3>But wait, there&#39;s more!</h3>
-    <p>
-      The client would like a reskinning of the app to match thier branding. A
-      designer has added a style guide to the app{' '}
-      <a
-        target="_blank"
-        href="https://github.com/HaughtCodeworks/front-end-technical-challenge/blob/master/grabhub_brand_identity.pdf"
-      >
-        available here
-      </a>{' '}
-      for download. Apply the new styles using your best judgment.
-    </p>
+
     <h2>Resources</h2>
     <ul>
       <li>
