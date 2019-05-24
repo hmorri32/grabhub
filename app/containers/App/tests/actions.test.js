@@ -40,4 +40,6 @@ describe('App Actions', () => {
       expect(repoLoadingError(fixture)).toEqual(expectedResult);
     });
   });
+
+  describe('the rest of the actions. TODO', () => {});
 });
