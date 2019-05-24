@@ -1,11 +1,6 @@
-/**
- * The global state selectors
- */
-
 import { createSelector } from 'reselect';
 
 const selectGlobal = state => state.get('global');
-
 const selectRouter = state => state.get('router');
 
 const makeSelectCurrentUser = () =>
@@ -27,6 +22,11 @@ const makeSelectLocation = () =>
     routerState.get('location').toJS(),
   );
 
+const makeSelectUserProfile = () =>
+  createSelector(selectGlobal, globalState =>
+    globalState.getIn(['userData', 'profile']),
+  );
+
 export {
   selectGlobal,
   makeSelectCurrentUser,
@@ -34,4 +34,5 @@ export {
   makeSelectError,
   makeSelectRepos,
   makeSelectLocation,
+  makeSelectUserProfile,
 };
