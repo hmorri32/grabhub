@@ -12,10 +12,6 @@ export default defineMessages({
     id: `${scope}.start_project.header`,
     defaultMessage: 'Grabhub',
   },
-  startProjectMessage: {
-    id: `${scope}.start_project.message`,
-    defaultMessage: 'Grab Github',
-  },
   trymeHeader: {
     id: `${scope}.tryme.header`,
     defaultMessage: 'Try me!',
