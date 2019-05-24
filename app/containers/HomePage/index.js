@@ -1,9 +1,3 @@
-/*
- * HomePage
- *
- * This is the first thing users see of our App, at the '/' route
- */
-
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Helmet } from 'react-helmet';
@@ -21,23 +15,22 @@ import {
 } from 'containers/App/selectors';
 import H2 from 'components/H2';
 import ReposList from 'components/ReposList';
+import styled from 'styled-components';
 import AtPrefix from './AtPrefix';
 import CenteredSection from './CenteredSection';
 import Form from './Form';
 import Input from './Input';
 import Section from './Section';
 import messages from './messages';
-import { loadRepos } from '../App/actions';
+import { loadRepos, loadUserProfile } from '../App/actions';
 import { changeUsername } from './actions';
 import { makeSelectUsername } from './selectors';
 import reducer from './reducer';
 import saga from './saga';
+import { GrabHubSVG } from './GrabHubSVG';
 
 /* eslint-disable react/prefer-stateless-function */
 export class HomePage extends React.PureComponent {
-  /**
-   * when initial state username is not null, submit the form to load repos
-   */
   componentDidMount() {
     if (this.props.username && this.props.username.trim().length > 0) {
       this.props.onSubmitForm();
@@ -52,6 +45,19 @@ export class HomePage extends React.PureComponent {
       repos,
     };
 
+    const InlineH2 = styled(H2)`
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #a76664;
+      font-weight: bold;
+      svg {
+        color: #a76664;
+        height: 70px;
+        width: 70px;
+      }
+    `;
+
     return (
       <article>
         <Helmet>
@@ -60,12 +66,10 @@ export class HomePage extends React.PureComponent {
         </Helmet>
         <div>
           <CenteredSection>
-            <H2>
+            <InlineH2>
+              <GrabHubSVG />
               <FormattedMessage {...messages.startProjectHeader} />
-            </H2>
-            <p>
-              <FormattedMessage {...messages.startProjectMessage} />
-            </p>
+            </InlineH2>
           </CenteredSection>
           <Section>
             <H2>
@@ -108,6 +112,7 @@ export function mapDispatchToProps(dispatch) {
     onChangeUsername: evt => dispatch(changeUsername(evt.target.value)),
     onSubmitForm: evt => {
       if (evt !== undefined && evt.preventDefault) evt.preventDefault();
+      dispatch(loadUserProfile());
       dispatch(loadRepos());
     },
   };
