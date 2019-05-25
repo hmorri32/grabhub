@@ -10,6 +10,7 @@ import ReposList from 'components/ReposList';
 import { HomePage, mapDispatchToProps } from '../index';
 import { changeUsername } from '../actions';
 import { loadRepos } from '../../App/actions';
+import UserProfileLink from '../UserProfileLink';
 
 describe('<HomePage />', () => {
   it('should render the repos list', () => {
@@ -19,6 +20,17 @@ describe('<HomePage />', () => {
     expect(
       renderedComponent.contains(
         <ReposList loading error={false} repos={[]} />,
+      ),
+    ).toEqual(true);
+  });
+
+  it('should render the link to the user profile', () => {
+    const renderedComponent = shallow(
+      <HomePage loading error={false} profile={{ login: 'yep' }} />,
+    );
+    expect(
+      renderedComponent.contains(
+        <UserProfileLink to="/userprofile">yep</UserProfileLink>,
       ),
     ).toEqual(true);
   });
