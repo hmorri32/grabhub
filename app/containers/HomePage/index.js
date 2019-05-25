@@ -12,12 +12,11 @@ import {
   makeSelectRepos,
   makeSelectLoading,
   makeSelectError,
+  makeSelectUserProfile,
 } from 'containers/App/selectors';
 import H2 from 'components/H2';
 import ReposList from 'components/ReposList';
-import styled from 'styled-components';
 import AtPrefix from './AtPrefix';
-import CenteredSection from './CenteredSection';
 import Form from './Form';
 import Input from './Input';
 import Section from './Section';
@@ -27,9 +26,8 @@ import { changeUsername } from './actions';
 import { makeSelectUsername } from './selectors';
 import reducer from './reducer';
 import saga from './saga';
-import { GrabHubSVG } from './GrabHubSVG';
+import UserProfileLink from './UserProfileLink';
 
-/* eslint-disable react/prefer-stateless-function */
 export class HomePage extends React.PureComponent {
   componentDidMount() {
     if (this.props.username && this.props.username.trim().length > 0) {
@@ -38,25 +36,20 @@ export class HomePage extends React.PureComponent {
   }
 
   render() {
-    const { loading, error, repos } = this.props;
+    const {
+      loading,
+      error,
+      repos,
+      username,
+      onChangeUsername,
+      onSubmitForm,
+      profile,
+    } = this.props;
     const reposListProps = {
       loading,
       error,
       repos,
     };
-
-    const InlineH2 = styled(H2)`
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      color: #a76664;
-      font-weight: bold;
-      svg {
-        color: #a76664;
-        height: 70px;
-        width: 70px;
-      }
-    `;
 
     return (
       <article>
@@ -65,17 +58,11 @@ export class HomePage extends React.PureComponent {
           <meta name="description" content="HCW Grabhub application homepage" />
         </Helmet>
         <div>
-          <CenteredSection>
-            <InlineH2>
-              <GrabHubSVG />
-              <FormattedMessage {...messages.startProjectHeader} />
-            </InlineH2>
-          </CenteredSection>
           <Section>
             <H2>
               <FormattedMessage {...messages.trymeHeader} />
             </H2>
-            <Form onSubmit={this.props.onSubmitForm}>
+            <Form onSubmit={onSubmitForm}>
               <label htmlFor="username">
                 <FormattedMessage {...messages.trymeMessage} />
                 <AtPrefix>
@@ -85,11 +72,16 @@ export class HomePage extends React.PureComponent {
                   id="username"
                   type="text"
                   placeholder="mxstbr"
-                  value={this.props.username}
-                  onChange={this.props.onChangeUsername}
+                  value={username}
+                  onChange={onChangeUsername}
                 />
               </label>
             </Form>
+            {profile && (
+              <UserProfileLink to="/userprofile">
+                {profile.login}
+              </UserProfileLink>
+            )}
             <ReposList {...reposListProps} />
           </Section>
         </div>
@@ -123,6 +115,7 @@ const mapStateToProps = createStructuredSelector({
   username: makeSelectUsername(),
   loading: makeSelectLoading(),
   error: makeSelectError(),
+  profile: makeSelectUserProfile(),
 });
 
 const withConnect = connect(
