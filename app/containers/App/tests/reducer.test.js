@@ -1,7 +1,13 @@
 import { fromJS } from 'immutable';
-
 import appReducer from '../reducer';
-import { loadRepos, reposLoaded, repoLoadingError } from '../actions';
+import {
+  loadRepos,
+  reposLoaded,
+  repoLoadingError,
+  loadUserProfile,
+  userProfileLoaded,
+  userProfileLoadingError,
+} from '../actions';
 
 describe('appReducer', () => {
   let state;
@@ -12,6 +18,7 @@ describe('appReducer', () => {
       currentUser: false,
       userData: fromJS({
         repositories: false,
+        profile: false,
       }),
     });
   });
@@ -31,11 +38,7 @@ describe('appReducer', () => {
   });
 
   it('should handle the reposLoaded action correctly', () => {
-    const fixture = [
-      {
-        name: 'My Repo',
-      },
-    ];
+    const fixture = [{ name: 'My Repo' }];
     const username = 'test';
     const expectedResult = state
       .setIn(['userData', 'repositories'], fixture)
@@ -48,12 +51,42 @@ describe('appReducer', () => {
   });
 
   it('should handle the repoLoadingError action correctly', () => {
-    const fixture = {
-      msg: 'Not found',
-    };
+    const fixture = { msg: 'Not found' };
+
     const expectedResult = state.set('error', fixture).set('loading', false);
 
     expect(appReducer(state, repoLoadingError(fixture))).toEqual(
+      expectedResult,
+    );
+  });
+
+  it('should handle the loadUserProfile action correctly', () => {
+    const expectedResult = state
+      .set('loading', true)
+      .set('error', false)
+      .setIn(['userData', 'profile'], false);
+
+    expect(appReducer(state, loadUserProfile())).toEqual(expectedResult);
+  });
+
+  it('should handle the userProfileLoaded action correctly', () => {
+    const fixture = [{ profile: {} }];
+
+    const expectedResult = state
+      .setIn(['userData', 'profile'], fixture)
+      .set('loading', false);
+
+    expect(appReducer(state, userProfileLoaded(fixture))).toEqual(
+      expectedResult,
+    );
+  });
+
+  it('should handle the userProfileLoadingError action correctly', () => {
+    const fixture = { msg: 'Not found' };
+
+    const expectedResult = state.set('error', fixture).set('loading', false);
+
+    expect(appReducer(state, userProfileLoadingError(fixture))).toEqual(
       expectedResult,
     );
   });
