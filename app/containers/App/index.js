@@ -16,6 +16,7 @@ import NotFoundPage from 'containers/NotFoundPage/Loadable';
 import Header from 'components/Header';
 import Footer from 'components/Footer';
 import Instructions from './Instructions';
+import UserProfile from '../UserProfile/Loadable';
 
 import GlobalStyle from '../../global-styles';
 
@@ -41,6 +42,7 @@ export default function App() {
       <Switch>
         <Route exact path="/" component={HomePage} />
         <Route exact path="/instructions" component={Instructions} />
+        <Route exact path="/userProfile" component={UserProfile} />
         <Route path="" component={NotFoundPage} />
       </Switch>
       <Footer />
