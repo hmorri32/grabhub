@@ -7,6 +7,7 @@ import {
   makeSelectError,
   makeSelectRepos,
   makeSelectLocation,
+  makeSelectUserProfile,
 } from '../selectors';
 
 describe('selectGlobal', () => {
@@ -82,5 +83,21 @@ describe('makeSelectLocation', () => {
     expect(locationStateSelector(mockedState)).toEqual(
       mockedState.getIn(['router', 'location']).toJS(),
     );
+  });
+});
+
+describe('makeSelectUserProfile', () => {
+  const userProfileSelector = makeSelectUserProfile();
+  it('should select the current user profile', () => {
+    const profile = fromJS({});
+    const mockedState = fromJS({
+      global: {
+        userData: {
+          profile,
+        },
+      },
+    });
+
+    expect(userProfileSelector(mockedState)).toEqual(profile);
   });
 });
