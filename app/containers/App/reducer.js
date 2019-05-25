@@ -51,8 +51,8 @@ function appReducer(state = initialState, action) {
         .setIn(['userData', 'profile'], false);
     case LOAD_USER_PROFILE_SUCCESS:
       return state
-        .set('loading', false)
-        .setIn(['userData', 'profile'], action.userProfile);
+        .setIn(['userData', 'profile'], action.userProfile)
+        .set('loading', false);
     case LOAD_USER_PROFILE_ERROR:
       return state.set('error', action.error).set('loading', false);
     default:
