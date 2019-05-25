@@ -6,10 +6,9 @@ import ListItem from 'components/ListItem';
 import LoadingIndicator from 'components/LoadingIndicator';
 import RepoListItem from 'containers/RepoListItem';
 
+// todo: maybe make this a pure component. idk
 function ReposList({ loading, error, repos }) {
-  if (loading) {
-    return <List component={LoadingIndicator} />;
-  }
+  if (loading) return <List component={LoadingIndicator} />;
 
   if (error !== false) {
     const ErrorComponent = () => (
@@ -18,9 +17,7 @@ function ReposList({ loading, error, repos }) {
     return <List component={ErrorComponent} />;
   }
 
-  if (repos !== false) {
-    return <List items={repos} component={RepoListItem} />;
-  }
+  if (repos !== false) return <List items={repos} component={RepoListItem} />;
 
   return null;
 }
