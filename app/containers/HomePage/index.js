@@ -21,7 +21,7 @@ import Form from './Form';
 import Input from './Input';
 import Section from './Section';
 import messages from './messages';
-import { loadRepos, loadUserProfile } from '../App/actions';
+import { loadRepos, loadUserProfile, loadUserFollowers } from '../App/actions';
 import { changeUsername } from './actions';
 import { makeSelectUsername } from './selectors';
 import reducer from './reducer';
@@ -105,6 +105,7 @@ export function mapDispatchToProps(dispatch) {
     onSubmitForm: evt => {
       if (evt !== undefined && evt.preventDefault) evt.preventDefault();
       dispatch(loadUserProfile());
+      dispatch(loadUserFollowers());
       dispatch(loadRepos());
     },
   };
