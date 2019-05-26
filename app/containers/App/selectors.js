@@ -27,6 +27,11 @@ const makeSelectUserProfile = () =>
     globalState.getIn(['userData', 'profile']),
   );
 
+const makeSelectUserFollowers = () =>
+  createSelector(selectGlobal, globalState =>
+    globalState.getIn(['userData', 'followers']),
+  );
+
 export {
   selectGlobal,
   makeSelectCurrentUser,
@@ -35,4 +40,5 @@ export {
   makeSelectRepos,
   makeSelectLocation,
   makeSelectUserProfile,
+  makeSelectUserFollowers,
 };

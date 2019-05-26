@@ -8,6 +8,7 @@ import {
   makeSelectRepos,
   makeSelectLocation,
   makeSelectUserProfile,
+  makeSelectUserFollowers,
 } from '../selectors';
 
 describe('selectGlobal', () => {
@@ -99,5 +100,21 @@ describe('makeSelectUserProfile', () => {
     });
 
     expect(userProfileSelector(mockedState)).toEqual(profile);
+  });
+});
+
+describe('makeSelectUserFollowers', () => {
+  const userFollowerSelector = makeSelectUserFollowers();
+  it('should select the current user profile', () => {
+    const followers = fromJS([{}]);
+    const mockedState = fromJS({
+      global: {
+        userData: {
+          followers,
+        },
+      },
+    });
+
+    expect(userFollowerSelector(mockedState)).toEqual(followers);
   });
 });
