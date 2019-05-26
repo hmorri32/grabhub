@@ -22,6 +22,9 @@ import {
   LOAD_USER_PROFILE,
   LOAD_USER_PROFILE_SUCCESS,
   LOAD_USER_PROFILE_ERROR,
+  LOAD_USER_FOLLOWERS,
+  LOAD_USER_FOLLOWERS_SUCCESS,
+  LOAD_USER_FOLLOWERS_ERROR,
 } from './constants';
 
 /**
@@ -54,10 +57,7 @@ export function reposLoaded(repos, username) {
  * @return {object} An action object with a type of LOAD_REPOS_ERROR passing the error
  */
 export function repoLoadingError(error) {
-  return {
-    type: LOAD_REPOS_ERROR,
-    error,
-  };
+  return { type: LOAD_REPOS_ERROR, error };
 }
 
 /**
@@ -83,5 +83,31 @@ export const userProfileLoaded = userProfile => ({
  */
 export const userProfileLoadingError = error => ({
   type: LOAD_USER_PROFILE_ERROR,
+  error,
+});
+
+/**
+ * Load the user's followers. this action starts the request saga
+ * @return {object} An action object with a type of LOAD_USER_FOLLOWERS
+ */
+export const loadUserFollowers = () => ({ type: LOAD_USER_FOLLOWERS });
+
+/**
+ * Dispatched when the user profile is loaded by the request saga
+ * @param  {array} followers The user profile data
+ * @return {object} An action object with a type of LOAD_USER_FOLLOWERS_SUCCESS passing the user profile
+ */
+export const userFollowersLoaded = followers => ({
+  type: LOAD_USER_FOLLOWERS_SUCCESS,
+  followers,
+});
+
+/**
+ * Dispatched when loading the user's followers fails
+ * @param  {object} error The error returned
+ * @return {object} An action object with a type of LOAD_USER_FOLLOWERS_ERROR passing the error
+ */
+export const userFollowersLoadingError = error => ({
+  type: LOAD_USER_FOLLOWERS_ERROR,
   error,
 });
