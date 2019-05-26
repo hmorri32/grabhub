@@ -46,6 +46,52 @@ Object {
 }
 `;
 
+exports[`application saga getUserFollowers Saga should call the userProfileLoadingError action if the response errors 1`] = `
+Object {
+  "@@redux-saga/IO": true,
+  "SELECT": Object {
+    "args": Array [],
+    "selector": [Function],
+  },
+}
+`;
+
+exports[`application saga getUserFollowers Saga should call the userProfileLoadingError action if the response errors 2`] = `
+Object {
+  "@@redux-saga/IO": true,
+  "CALL": Object {
+    "args": Array [
+      "https://api.github.com/users/mxstbr/followers",
+    ],
+    "context": null,
+    "fn": [Function],
+  },
+}
+`;
+
+exports[`application saga getUserFollowers Saga should dispatch the userFollowersLoaded action if it requests the data successfully 1`] = `
+Object {
+  "@@redux-saga/IO": true,
+  "SELECT": Object {
+    "args": Array [],
+    "selector": [Function],
+  },
+}
+`;
+
+exports[`application saga getUserFollowers Saga should dispatch the userFollowersLoaded action if it requests the data successfully 2`] = `
+Object {
+  "@@redux-saga/IO": true,
+  "CALL": Object {
+    "args": Array [
+      "https://api.github.com/users/mxstbr/followers",
+    ],
+    "context": null,
+    "fn": [Function],
+  },
+}
+`;
+
 exports[`application saga getUserProfile Saga should call the userProfileLoadingError action if the response errors 1`] = `
 Object {
   "@@redux-saga/IO": true,

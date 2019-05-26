@@ -3,14 +3,24 @@
  */
 
 import { put, takeLatest } from 'redux-saga/effects';
-import { LOAD_REPOS, LOAD_USER_PROFILE } from 'containers/App/constants';
+import {
+  LOAD_REPOS,
+  LOAD_USER_PROFILE,
+  LOAD_USER_FOLLOWERS,
+} from 'containers/App/constants';
 import {
   reposLoaded,
   repoLoadingError,
   userProfileLoaded,
   userProfileLoadingError,
+  userFollowersLoaded,
+  userFollowersLoadingError,
 } from 'containers/App/actions';
-import githubData, { getRepos, getUserProfile } from '../saga';
+import githubData, {
+  getRepos,
+  getUserProfile,
+  getUserFollowers,
+} from '../saga';
 const username = 'mxstbr';
 
 /* eslint-disable redux-saga/yield-effects */
@@ -31,14 +41,7 @@ describe('application saga', () => {
     });
 
     it('should dispatch the reposLoaded action if it requests the data successfully', () => {
-      const response = [
-        {
-          name: 'First repo',
-        },
-        {
-          name: 'Second repo',
-        },
-      ];
+      const response = [{ name: 'First repo' }, { name: 'Second repo' }];
       const putDescriptor = getReposGenerator.next(response).value;
       expect(putDescriptor).toEqual(put(reposLoaded(response, username)));
     });
@@ -63,11 +66,7 @@ describe('application saga', () => {
     });
 
     it('should dispatch the userProfileLoaded action if it requests the data successfully', () => {
-      const response = [
-        {
-          profile: {},
-        },
-      ];
+      const response = [{ profile: {} }];
       const putDescriptor = getUserProfileGenerator.next(response).value;
       expect(putDescriptor).toEqual(put(userProfileLoaded(response)));
     });
@@ -76,6 +75,31 @@ describe('application saga', () => {
       const response = new Error('oh no');
       const putDescriptor = getUserProfileGenerator.throw(response).value;
       expect(putDescriptor).toEqual(put(userProfileLoadingError(response)));
+    });
+  });
+
+  describe('getUserFollowers Saga', () => {
+    let getUserFollwersGenerator;
+    beforeEach(() => {
+      getUserFollwersGenerator = getUserFollowers();
+
+      const selectDescriptor = getUserFollwersGenerator.next().value;
+      expect(selectDescriptor).toMatchSnapshot();
+
+      const callDescriptor = getUserFollwersGenerator.next(username).value;
+      expect(callDescriptor).toMatchSnapshot();
+    });
+
+    it('should dispatch the userFollowersLoaded action if it requests the data successfully', () => {
+      const followers = [{ name: 'coool guy jones' }, { name: 'khaleesi' }];
+      const putDescriptor = getUserFollwersGenerator.next(followers).value;
+      expect(putDescriptor).toEqual(put(userFollowersLoaded(followers)));
+    });
+
+    it('should call the userProfileLoadingError action if the response errors', () => {
+      const response = new Error('oh no');
+      const putDescriptor = getUserFollwersGenerator.throw(response).value;
+      expect(putDescriptor).toEqual(put(userFollowersLoadingError(response)));
     });
   });
 
@@ -91,6 +115,13 @@ describe('application saga', () => {
       const takeLatestDescriptor = githubDataSaga.next().value;
       expect(takeLatestDescriptor).toEqual(
         takeLatest(LOAD_USER_PROFILE, getUserProfile),
+      );
+    });
+
+    it('should start task to watch for LOAD_USER_FOLLOWERS action', () => {
+      const takeLatestDescriptor = githubDataSaga.next().value;
+      expect(takeLatestDescriptor).toEqual(
+        takeLatest(LOAD_USER_FOLLOWERS, getUserFollowers),
       );
     });
   });
