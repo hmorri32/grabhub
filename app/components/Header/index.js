@@ -1,6 +1,6 @@
 import React from 'react';
 import { FormattedMessage } from 'react-intl';
-import InlineH2 from './InlineH2';
+import InlineLink from './InlineLink';
 import NavBar from './NavBar';
 import HeaderLink from './HeaderLink';
 import messages from './messages';
@@ -12,13 +12,11 @@ class Header extends React.Component {
     return (
       <div>
         <NavBar>
-          <HeaderLink to="/">
-            <FormattedMessage {...messages.home} />
-          </HeaderLink>
-          <InlineH2>
+          <InlineLink to="/">
             <GrabHubSVG />
             <FormattedMessage {...messages.startProjectHeader} />
-          </InlineH2>
+          </InlineLink>
+          <HeaderLink to="/style-guide">Style Guide</HeaderLink>
         </NavBar>
       </div>
     );
