@@ -15,3 +15,6 @@ export const LOAD_REPOS_ERROR = 'boilerplate/App/LOAD_REPOS_ERROR';
 export const LOAD_USER_PROFILE = 'boilerplate/App/LOAD_USER_PROFILE';
 export const LOAD_USER_PROFILE_SUCCESS = 'boilerplate/App/LOAD_USER_PROFILE_SUCCESS'; // prettier-ignore
 export const LOAD_USER_PROFILE_ERROR = 'boilerplate/App/LOAD_USER_PROFILE_ERROR'; // prettier-ignore
+export const LOAD_USER_FOLLOWERS = 'boilerplate/App/LOAD_USER_FOLLOWERS'; // prettier-ignore
+export const LOAD_USER_FOLLOWERS_SUCCESS = 'boilerplate/App/LOAD_USER_FOLLOWERS_SUCCESS'; // prettier-ignore
+export const LOAD_USER_FOLLOWERS_ERROR = 'boilerplate/App/LOAD_USER_FOLLOWERS_ERROR'; // prettier-ignore
