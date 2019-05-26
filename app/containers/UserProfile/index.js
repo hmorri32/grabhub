@@ -8,13 +8,17 @@ import {
   makeSelectLoading,
   makeSelectError,
   makeSelectUserProfile,
+  makeSelectUserFollowers,
 } from 'containers/App/selectors';
 
 import ListItem from 'components/ListItem';
 import LoadingIndicator from 'components/LoadingIndicator';
 import List from 'components/List';
 
-export const UserProfile = ({ loading, error, profile }) => {
+/* eslint-disable */
+
+export const UserProfile = ({ loading, error, profile, followers }) => {
+  console.log({ loading, error, profile, followers });
   if (loading) return <List component={LoadingIndicator} />;
 
   if (error) {
@@ -33,10 +37,12 @@ UserProfile.propTypes = {
   loading: PropTypes.bool,
   error: PropTypes.oneOfType([PropTypes.object, PropTypes.bool]),
   profile: PropTypes.oneOfType([PropTypes.object, PropTypes.bool]),
+  followers: PropTypes.oneOfType([PropTypes.array, PropTypes.bool]),
 };
 
 const mapStateToProps = createStructuredSelector({
   profile: makeSelectUserProfile(),
+  followers: makeSelectUserFollowers(),
   loading: makeSelectLoading(),
   error: makeSelectError(),
 });
