@@ -7,6 +7,9 @@ import {
   loadUserProfile,
   userProfileLoaded,
   userProfileLoadingError,
+  loadUserFollowers,
+  userFollowersLoaded,
+  userFollowersLoadingError,
 } from '../actions';
 
 describe('appReducer', () => {
@@ -19,6 +22,7 @@ describe('appReducer', () => {
       userData: fromJS({
         repositories: false,
         profile: false,
+        followers: false,
       }),
     });
   });
@@ -28,66 +32,103 @@ describe('appReducer', () => {
     expect(appReducer(undefined, {})).toEqual(expectedResult);
   });
 
-  it('should handle the loadRepos action correctly', () => {
-    const expectedResult = state
-      .set('loading', true)
-      .set('error', false)
-      .setIn(['userData', 'repositories'], false);
+  describe('load repose', () => {
+    it('should handle the loadRepos action correctly', () => {
+      const expectedResult = state
+        .set('loading', true)
+        .set('error', false)
+        .setIn(['userData', 'repositories'], false);
 
-    expect(appReducer(state, loadRepos())).toEqual(expectedResult);
+      expect(appReducer(state, loadRepos())).toEqual(expectedResult);
+    });
+
+    it('should handle the reposLoaded action correctly', () => {
+      const fixture = [{ name: 'yung repo' }];
+      const username = 'test';
+      const expectedResult = state
+        .setIn(['userData', 'repositories'], fixture)
+        .set('loading', false)
+        .set('currentUser', username);
+
+      expect(appReducer(state, reposLoaded(fixture, username))).toEqual(
+        expectedResult,
+      );
+    });
+
+    it('should handle the repoLoadingError action correctly', () => {
+      const fixture = { msg: 'ay no mijo' };
+
+      const expectedResult = state.set('error', fixture).set('loading', false);
+
+      expect(appReducer(state, repoLoadingError(fixture))).toEqual(
+        expectedResult,
+      );
+    });
   });
 
-  it('should handle the reposLoaded action correctly', () => {
-    const fixture = [{ name: 'My Repo' }];
-    const username = 'test';
-    const expectedResult = state
-      .setIn(['userData', 'repositories'], fixture)
-      .set('loading', false)
-      .set('currentUser', username);
+  describe('load user profile', () => {
+    it('should handle the loadUserProfile action correctly', () => {
+      const expectedResult = state
+        .set('loading', true)
+        .set('error', false)
+        .setIn(['userData', 'profile'], false);
 
-    expect(appReducer(state, reposLoaded(fixture, username))).toEqual(
-      expectedResult,
-    );
+      expect(appReducer(state, loadUserProfile())).toEqual(expectedResult);
+    });
+
+    it('should handle the userProfileLoaded action correctly', () => {
+      const userProfileFixture = [{ profile: {} }];
+
+      const expectedResult = state
+        .setIn(['userData', 'profile'], userProfileFixture)
+        .set('loading', false);
+
+      expect(appReducer(state, userProfileLoaded(userProfileFixture))).toEqual(
+        expectedResult,
+      );
+    });
+
+    it('should handle the userProfileLoadingError action correctly', () => {
+      const fixture = { msg: 'ay caramba' };
+
+      const expectedResult = state.set('error', fixture).set('loading', false);
+
+      expect(appReducer(state, userProfileLoadingError(fixture))).toEqual(
+        expectedResult,
+      );
+    });
   });
 
-  it('should handle the repoLoadingError action correctly', () => {
-    const fixture = { msg: 'Not found' };
+  describe('load user followers', () => {
+    it('should handle the loadUserfollowers action correctly', () => {
+      const expectedResult = state
+        .set('loading', true)
+        .set('error', false)
+        .setIn(['userData', 'followers'], false);
 
-    const expectedResult = state.set('error', fixture).set('loading', false);
+      expect(appReducer(state, loadUserFollowers())).toEqual(expectedResult);
+    });
 
-    expect(appReducer(state, repoLoadingError(fixture))).toEqual(
-      expectedResult,
-    );
-  });
+    it('should handle the userFollowersLoaded action correctly', () => {
+      const followersFixture = [{ followers: {} }];
 
-  it('should handle the loadUserProfile action correctly', () => {
-    const expectedResult = state
-      .set('loading', true)
-      .set('error', false)
-      .setIn(['userData', 'profile'], false);
+      const expectedResult = state
+        .setIn(['userData', 'followers'], followersFixture)
+        .set('loading', false);
 
-    expect(appReducer(state, loadUserProfile())).toEqual(expectedResult);
-  });
+      expect(appReducer(state, userFollowersLoaded(followersFixture))).toEqual(
+        expectedResult,
+      );
+    });
 
-  it('should handle the userProfileLoaded action correctly', () => {
-    const fixture = [{ profile: {} }];
+    it('should handle the userFollowersLoadingError action correctly', () => {
+      const fixture = { msg: 'ay caramba' };
 
-    const expectedResult = state
-      .setIn(['userData', 'profile'], fixture)
-      .set('loading', false);
+      const expectedResult = state.set('error', fixture).set('loading', false);
 
-    expect(appReducer(state, userProfileLoaded(fixture))).toEqual(
-      expectedResult,
-    );
-  });
-
-  it('should handle the userProfileLoadingError action correctly', () => {
-    const fixture = { msg: 'Not found' };
-
-    const expectedResult = state.set('error', fixture).set('loading', false);
-
-    expect(appReducer(state, userProfileLoadingError(fixture))).toEqual(
-      expectedResult,
-    );
+      expect(appReducer(state, userFollowersLoadingError(fixture))).toEqual(
+        expectedResult,
+      );
+    });
   });
 });
