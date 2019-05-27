@@ -46,6 +46,7 @@ export default class UserProfile extends PureComponent {
       font-size: 18px;
       font-weight: normal;
       color: #a76664;
+      width: 400px;
     `;
 
     return (
