@@ -20,8 +20,4 @@ export default styled(Link)`
     border-color: #faa353;
     color: #faa353;
   }
-
-  &:active {
-    color: #fff;
-  }
 `;
