@@ -10,6 +10,7 @@ const Form = styled.form`
   cursor: pointer;
   label {
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    color: black;
   }
   font-size: 20px;
   color: #a76664;
