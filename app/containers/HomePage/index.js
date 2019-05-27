@@ -16,6 +16,7 @@ import {
 } from 'containers/App/selectors';
 import H2 from 'components/H2';
 import ReposList from 'components/ReposList';
+import AvatarImage from './AvatarImage';
 import AtPrefix from './AtPrefix';
 import Form from './Form';
 import Input from './Input';
@@ -71,7 +72,7 @@ export class HomePage extends React.PureComponent {
                 <Input
                   id="username"
                   type="text"
-                  placeholder="mxstbr"
+                  placeholder="hmorri32"
                   value={username}
                   onChange={onChangeUsername}
                 />
@@ -79,6 +80,7 @@ export class HomePage extends React.PureComponent {
             </Form>
             {profile && (
               <UserProfileLink to="/userprofile">
+                <AvatarImage src={profile.avatar_url} alt="user-profile" />
                 {profile.login}
               </UserProfileLink>
             )}
