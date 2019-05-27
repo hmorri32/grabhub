@@ -14,7 +14,6 @@ import {
   makeSelectError,
   makeSelectUserProfile,
 } from 'containers/App/selectors';
-import H2 from 'components/H2';
 import ReposList from 'components/ReposList';
 import AvatarImage from './AvatarImage';
 import AtPrefix from './AtPrefix';
@@ -60,9 +59,6 @@ export class HomePage extends React.PureComponent {
         </Helmet>
         <div>
           <Section>
-            <H2>
-              <FormattedMessage {...messages.trymeHeader} />
-            </H2>
             <Form onSubmit={onSubmitForm}>
               <label htmlFor="username">
                 <FormattedMessage {...messages.trymeMessage} />
