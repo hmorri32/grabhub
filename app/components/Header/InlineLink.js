@@ -15,14 +15,14 @@ const InlineLink = styled(Link)`
   display: flex;
   justify-content: space-around;
   align-items: center;
-  font-size: 1.7em;
+  font-size: 1.8em;
   color: #a76664;
   font-weight: bold;
   text-decoration: none;
   svg {
     color: #a76664;
-    height: 70px;
-    width: 70px;
+    height: 80px;
+    width: 80px;
   }
   &:hover {
     svg {
