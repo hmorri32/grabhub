@@ -3,19 +3,17 @@ import styled from 'styled-components';
 
 export default styled(Link)`
   display: inline-flex;
-  padding: 0.25em 2em;
-  margin: 1em;
+  align-items: center;
+  margin: 0 10px 10px 10px;
   text-decoration: none;
   border-radius: 4px;
-  -webkit-font-smoothing: antialiased;
+  -webkit-font-smoothing: antialiased
   -webkit-touch-callout: none;
   user-select: none;
   cursor: pointer;
-  outline: 0;
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-weight: bold;
-  font-size: 16px;
-  border: 2px solid #a76664;
+  font-size: 26px;
   color: #a76664;
 
   &:hover {
@@ -24,7 +22,6 @@ export default styled(Link)`
   }
 
   &:active {
-    background: #faa353;
     color: #fff;
   }
 `;
