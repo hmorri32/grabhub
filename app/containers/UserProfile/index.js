@@ -14,11 +14,11 @@ import {
 import ListItem from 'components/ListItem';
 import LoadingIndicator from 'components/LoadingIndicator';
 import List from 'components/List';
+import UserProfile from './UserProfile';
 
-/* eslint-disable */
+// TODO the user's name, avatar image, a link to their github profile, when they joined the system, and a list of their followers.
 
-export const UserProfile = ({ loading, error, profile, followers }) => {
-  console.log({ loading, error, profile, followers });
+export const UserProfileWrapper = ({ loading, error, profile, followers }) => {
   if (loading) return <List component={LoadingIndicator} />;
 
   if (error) {
@@ -28,12 +28,14 @@ export const UserProfile = ({ loading, error, profile, followers }) => {
     return <List component={ErrorComponent} />;
   }
 
-  if (profile) return <div>{profile.login}</div>;
-
+  if (profile) {
+    const profileProps = { profile, followers };
+    return <UserProfile {...profileProps} />;
+  }
   return null;
 };
 
-UserProfile.propTypes = {
+UserProfileWrapper.propTypes = {
   loading: PropTypes.bool,
   error: PropTypes.oneOfType([PropTypes.object, PropTypes.bool]),
   profile: PropTypes.oneOfType([PropTypes.object, PropTypes.bool]),
@@ -52,4 +54,4 @@ const withConnect = connect(
   null,
 );
 
-export default compose(withConnect)(UserProfile);
+export default compose(withConnect)(UserProfileWrapper);
