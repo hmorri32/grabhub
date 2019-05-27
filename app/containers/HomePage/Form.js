@@ -3,7 +3,6 @@ import styled from 'styled-components';
 const Form = styled.form`
   margin-bottom: 1em;
   font-size: 20px;
-  border-radius: 4px;
   -webkit-font-smoothing: antialiased
   -webkit-touch-callout: none;
   text-decoration: none;
