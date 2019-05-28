@@ -35,7 +35,6 @@ describe('<FollowersList />', () => {
     ];
 
     const renderedComponent = shallow(<FollowersList followers={followers} />);
-    console.log(renderedComponent.debug());
 
     expect(renderedComponent.find(ListWrapper)).toHaveLength(1);
   });
