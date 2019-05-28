@@ -1,7 +1,3 @@
-/**
- * Test the HomePage
- */
-
 import React from 'react';
 import { shallow, mount } from 'enzyme';
 import { IntlProvider } from 'react-intl';
@@ -11,6 +7,7 @@ import { HomePage, mapDispatchToProps } from '../index';
 import { changeUsername } from '../actions';
 import { loadRepos } from '../../App/actions';
 import UserProfileLink from '../UserProfileLink';
+import AvatarImage from '../AvatarImage';
 
 describe('<HomePage />', () => {
   it('should render the repos list', () => {
@@ -24,13 +21,21 @@ describe('<HomePage />', () => {
     ).toEqual(true);
   });
 
-  it('should render the link to the user profile', () => {
+  it('should render the link to the user profile with an avatar', () => {
     const renderedComponent = shallow(
-      <HomePage loading error={false} profile={{ login: 'yep' }} />,
+      <HomePage
+        loading
+        error={false}
+        profile={{ login: 'yep', avatar_url: 'stuff' }}
+      />,
     );
+
     expect(
       renderedComponent.contains(
-        <UserProfileLink to="/userprofile">yep</UserProfileLink>,
+        <UserProfileLink to="/userprofile">
+          <AvatarImage src="stuff" alt="user-profile" />
+          yep
+        </UserProfileLink>,
       ),
     ).toEqual(true);
   });
