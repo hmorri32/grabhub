@@ -16,8 +16,6 @@ import LoadingIndicator from 'components/LoadingIndicator';
 import List from 'components/List';
 import UserProfile from './UserProfile';
 
-// TODO the user's name, avatar image, a link to their github profile, when they joined the system, and a list of their followers.
-
 export const UserProfileWrapper = ({ loading, error, profile, followers }) => {
   if (loading) return <List component={LoadingIndicator} />;
 
