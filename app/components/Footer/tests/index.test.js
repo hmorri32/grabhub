@@ -25,7 +25,7 @@ describe('<Footer />', () => {
           <FormattedMessage
             {...messages.authorMessage}
             values={{
-              author: 'Haught Codeworks',
+              author: 'HBM',
             }}
           />
         </section>,

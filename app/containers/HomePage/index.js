@@ -55,7 +55,7 @@ export class HomePage extends React.PureComponent {
       <article>
         <Helmet>
           <title>Home Page</title>
-          <meta name="description" content="HCW Grabhub application homepage" />
+          <meta name="description" content="HBM Grabhub" />
         </Helmet>
         <div>
           <Section>

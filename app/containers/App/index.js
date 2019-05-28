@@ -32,11 +32,8 @@ const AppWrapper = styled.div`
 export default function App() {
   return (
     <AppWrapper>
-      <Helmet titleTemplate="%s - HCW Grabhub" defaultTitle="HCW Grabhub">
-        <meta
-          name="description"
-          content="HCW technical interview code challenge"
-        />
+      <Helmet titleTemplate="HBM Grabhub" defaultTitle="HBM Grabhub">
+        <meta name="description" />
       </Helmet>
       <Header />
       <Switch>
