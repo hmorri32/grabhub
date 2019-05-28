@@ -1,22 +1,26 @@
+## GrabHub
 
-<div align="center"><strong>This is the repo for the HCW technical interview front-end code challenge</strong></div>
-<div align="center">It was built on top of React Boilerplate</div>
-
-<h2>Getting Started</h2>
+### Getting Started
 <ol>
-  <li>Git clone the repo: <code>git clone https://github.com/HaughtCodeworks/front-end-technical-challenge.git grabhub</code></li>
-  <li>cd into the project: <code>cd grabhub</code></li>
-  <li>install dependencies: <code>npm install</code></li>
-  <li>start the server: <code>npm start</code></li>
-  <li>navigate to: <code>http://localhost:3000/instructions</code> to read the instructions for completing the challenge.</li>
-  <li>run tests: <code>npm test</code></li>
-  <li>when you've completed the challenge, push the code to your own repo and let us know!</li>
+  <li>clone the repo like <code>$ git clone https://github.com/hmorri32/grabhub.git</code></li>
+  <li>cd into the project: <code>$ cd grabhub</code></li>
+  <li>install dependencies: <code>$ npm install</code></li>
+  <li>start the server like: <code>$ npm start</code></li>
+  <li>run the test suite like: <code>$ npm test</code></li>
+  <li>navigate to <code>localhost:3000</code></li>
+  <li>profit</li>
 </ol>
 
-<h3>The React Boilerplate Readme follows...</h3>
+### Cool Screenshots
 
+![homepage](./assets/homepage-screenshot.png)
+![profile](./assets/profile-screenshot.png)
+![coverage](./assets/coverage.png)
 
-## Features
+---------------------
+
+## React Boilerplate
+### Features
 
 <dl>
   <dt>Quick scaffolding</dt>
