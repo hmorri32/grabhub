@@ -2,8 +2,12 @@
 
 exports[`<IssueIcon /> should match the snapshot 1`] = `
 .c0 {
-  fill: #ccc;
+  fill: #a76664;
   margin-right: 0.25em;
+}
+
+.c0:hover {
+  fill: #faa353;
 }
 
 <svg
